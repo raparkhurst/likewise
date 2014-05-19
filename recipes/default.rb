@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: likewise-open
+# Cookbook Name:: likewise
 # Recipe:: default
 #
 # Distributed under the terms of the Apache 2 license
