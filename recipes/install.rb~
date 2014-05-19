@@ -1,0 +1,56 @@
+#
+# Cookbook Name:: likewise
+# Recipe:: install
+#
+# Copyright 2014, raparkhurst <robert.parkhurst@gmail.com>
+#
+# Distributed under the terms of the Apache 2 license
+#
+
+# remove existing authentication plugins
+[
+  "nscd",
+  "winbind"
+].each do |pkg|
+  package pkg do
+    action :purge
+  end
+end
+
+# install likewise packages
+node[:likewise][:packages].each do |pkg|
+  package pkg do
+    action :upgrade
+  end
+end
+
+# manage templates -- nsswitch.conf
+template "/etc/nsswitch.conf" do
+  source "nsswitch.conf.erb"
+  mode "0644"
+end
+
+# manage template -- likewise.sh profile variables
+template "/etc/profile.d/likewise.sh" do
+  source "likewise.sh.erb"
+  mode "0755"
+end
+
+
+execute "join-domain" do
+  command "domainjoin-cli join #{node[:likewise][:domain]} #{node[:likewise][:dom_user]} \"#{node[:likewise][:dom_pw]}\""
+  #only_if "/opt/pbis/bin/get-status #{node[:likewise][:domain]}".to_i == 0
+end
+
+
+# Set specific policies
+node[:likewise][:attributes].each do |attr,val|
+  execute "/opt/pbis/bin/config #{attr} #{val}"
+end
+
+# Set Sudoers
+node[:likewise][:ad_admins].each do |grp|
+  sudo "#{grp}" do
+    group "#{grp}"
+  end
+end

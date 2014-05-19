@@ -1,0 +1,10 @@
+#
+# Cookbook Name:: likewise-open
+# Recipe:: default
+#
+# Copyright 2014, raparkhurst <robert.parkhurst@gmail.com>
+#
+# Distributed under the terms of the Apache 2 license
+#
+
+include_recipe "likewise::install"
