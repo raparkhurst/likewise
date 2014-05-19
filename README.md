@@ -19,34 +19,64 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['likewise']['bacon']</tt></td>
+    <td><tt>['likewise']['domain']</tt></td>
+    <td>string</td>
+    <td>name of the domain to join</td>
+    <td><tt>example.com</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['likewise']['dom_user']</tt></td>
+    <td>string</td>
+    <td>Domain user allowed to join a system to a domain</td>
+    <td><tt>admin</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['likewise']['dom_pw']</tt></td>
+    <td>string</td>
+    <td>Password for dom_user to use for authenticating to the domain</td>
+    <td><tt>password</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['likewise']['dom_join']</tt></td>
     <td>Boolean</td>
-    <td>whether to include bacon</td>
+    <td>whether to join the domain</td>
     <td><tt>true</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['likewise']['packages']</tt></td>
+    <td>Array</td>
+    <td>Package list to install</td>
+    <td><tt>[ "likewise-open" ]</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['likewise']['ad_admins']</tt></td>
+    <td>Array</td>
+    <td>Users that are allowed to use 'sudo'</td>
+    <td><tt>[ "unix_admins" ]</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['likewise']['ad_users']</tt></td>
+    <td>Array</td>
+    <td>Users that are allowed to login to the system</td>
+    <td><tt>[ "Domain Users" ]</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['likewise']['attributes']</tt></td>
+    <td>Hash</td>
+    <td>Hash of attributes and values to set</td>
+    <td><tt>{
+  "AssumeDefaultDomain" => true,
+  "CreateHomeDir" => true,
+  "HomeDirPrefix" => "/home",
+  "HomeDirTemplate" => "%H/%D/%U",
+  "LoginShellTemplate" => "/bin/bash"
+  }</tt></td>
   </tr>
 </table>
 
 Usage
 -----
 #### likewise::default
-
-The default attributes for likewise are as follows:
-
-default[:likewise][:domain] = 'example.com'
-default[:likewise][:dom_user] = 'admin'
-default[:likewise][:dom_pw] = 'password'
-default[:likewise][:dom_join] = true
-default[:likewise][:packages] = [ "likewise-open" ]
-default[:likewise][:ad_admins] = [ "unix_admins" ]
-default[:likewise][:ad_users] = [ "Domain Users" ]
-default[:likewise][:attributes] = {
-  "AssumeDefaultDomain" => true,
-  "CreateHomeDir" => true,
-  "HomeDirPrefix" => "/home",
-  "HomeDirTemplate" => "%H/%D/%U",
-  "LoginShellTemplate" => "/bin/bash"
-  }
-
 
 For the domain user ('dom_user') and domain password ('dom_pw') you will need to supply a valid user and password that have the authority to join a system to a domain.  I don't have support for data bags, or encrypted data bags yet, but you can put these in either your node definition or enviornment (or encapsulate it in another cookbook that then calls this).
 
