@@ -6,7 +6,10 @@ This cookbook will join a linux system to an existing Active Directory domain an
 
 Requirements
 ------------
-Right now this has only been tested on Ubuntu so only Ubuntu or Debian systems.  In addition you will need to download the packages for likewise and put them into a local repository that each node will have access to.
+You will need to download the likewise packages from BeyondTrust and place them in an accessible repository.
+
+Currently I have only tested this on Ubuntu 14.04 but it should also work on Debian based systems.
+
 
 Attributes
 ----------
