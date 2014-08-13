@@ -51,17 +51,17 @@ end
 
 
 execute "join-domain" do
-  command "domainjoin-cli join #{node[:likewise][:domain]} #{node[:likewise][:dom_user]} \"#{node[:likewise][:dom_pw]}\""
+  command "domainjoin-cli join #{node[:auth][:domain]} #{node[:auth][:dom_user]} \"#{node[:auth][:dom_pw]}\""
 end
 
 
 # Set specific policies
-node[:likewise][:attributes].each do |attr,val|
+node[:auth][:attributes].each do |attr,val|
   execute "/opt/pbis/bin/config #{attr} #{val}"
 end
 
 # Set Sudoers
-node[:likewise][:ad_admins].each do |grp|
+node[:auth][:ad_admins].each do |grp|
   sudo "#{grp}" do
     group "#{grp}"
   end
