@@ -1,11 +1,11 @@
-likewise-open CHANGELOG
+likewise CHANGELOG
 =======================
 
-This file is used to list changes made in each version of the likewise-open cookbook.
+This file is used to list changes made in each version of the likewise cookbook.
 
-0.1.0
+0.1.7
 -----
-- [your_name] - Initial release of likewise-open
+- Robert Parkhurst - Initial release of likewise-open
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.
