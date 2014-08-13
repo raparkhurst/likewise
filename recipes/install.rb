@@ -31,7 +31,7 @@
 end
 
 # install likewise packages
-node[:likewise][:packages].each do |pkg|
+node[:auth][:packages].each do |pkg|
   package pkg do
     action :upgrade
   end
