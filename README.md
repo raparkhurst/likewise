@@ -22,49 +22,49 @@ Attributes
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['likewise']['domain']</tt></td>
+    <td><tt>['auth']['domain']</tt></td>
     <td>string</td>
     <td>name of the domain to join</td>
     <td><tt>example.com</tt></td>
   </tr>
   <tr>
-    <td><tt>['likewise']['dom_user']</tt></td>
+    <td><tt>['auth']['dom_user']</tt></td>
     <td>string</td>
     <td>Domain user allowed to join a system to a domain</td>
     <td><tt>admin</tt></td>
   </tr>
   <tr>
-    <td><tt>['likewise']['dom_pw']</tt></td>
+    <td><tt>['auth']['dom_pw']</tt></td>
     <td>string</td>
     <td>Password for dom_user to use for authenticating to the domain</td>
     <td><tt>password</tt></td>
   </tr>
   <tr>
-    <td><tt>['likewise']['dom_join']</tt></td>
+    <td><tt>['auth']['dom_join']</tt></td>
     <td>Boolean</td>
     <td>whether to join the domain</td>
     <td><tt>true</tt></td>
   </tr>
   <tr>
-    <td><tt>['likewise']['packages']</tt></td>
+    <td><tt>['auth']['packages']</tt></td>
     <td>Array</td>
     <td>Package list to install</td>
     <td><tt>[ "likewise-open" ]</tt></td>
   </tr>
   <tr>
-    <td><tt>['likewise']['ad_admins']</tt></td>
+    <td><tt>['auth']['ad_admins']</tt></td>
     <td>Array</td>
     <td>Users that are allowed to use 'sudo'</td>
     <td><tt>[ "unix_admins" ]</tt></td>
   </tr>
   <tr>
-    <td><tt>['likewise']['ad_users']</tt></td>
+    <td><tt>['auth']['ad_users']</tt></td>
     <td>Array</td>
     <td>Users that are allowed to login to the system</td>
     <td><tt>[ "Domain Users" ]</tt></td>
   </tr>
   <tr>
-    <td><tt>['likewise']['attributes']</tt></td>
+    <td><tt>['auth']['attributes']</tt></td>
     <td>Hash</td>
     <td>Hash of attributes and values to set</td>
     <td><tt>{
