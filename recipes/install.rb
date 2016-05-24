@@ -4,7 +4,7 @@
 #
 # Distributed under the terms of the Apache 2 license
 #
-# Copyright 2014 Robert Parkhurst <robert.parkhurst@gmail.com>
+# Copyright 2016 Robert Parkhurst <raparkhurst@digitalsynapse.io>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+chef_gem "chef-vault"
+require 'chef-vault'
+
+
+domain_information = ChefVault::Item.load("#{node[:likewise][:vault][:name]}", "#{node[:likewise][:vault][:item]}")
+
+domain_name = domain_information['domain']
+domain_user = domain_information['domain_user']
+domain_pass = domain_information['domain_passwd']
 
 
 # remove existing authentication plugins
@@ -51,7 +60,7 @@ end
 
 
 execute "join-domain" do
-  command "domainjoin-cli join #{node[:auth][:domain]} #{node[:auth][:dom_user]} \"#{node[:auth][:dom_pw]}\""
+  command "domainjoin-cli join #{domain_name} #{domain_user} \"#{domain_pass}\""
 end
 
 
