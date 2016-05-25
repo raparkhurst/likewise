@@ -63,7 +63,6 @@ execute "join-domain" do
   command "domainjoin-cli join #{domain_name} #{domain_user} \"#{domain_pass}\""
 end
 
-
 # Set specific policies
 node[:auth][:attributes].each do |attr,val|
   execute "/opt/pbis/bin/config #{attr} #{val}"
